@@ -5,6 +5,7 @@ import { fetchProperty } from '@/utils/requests';
 import PropertyHeaderImage from '@/components/PropertyHeaderImage';
 import Link from 'next/link';
 import PropertyDetails from '@/components/PropertyDetails';
+import PropertyImages from '@/components/PropertyImages';
 import Spinner  from '@/components/Spinner';
 import { FaArrowLeft } from 'react-icons/fa';
 
@@ -159,6 +160,8 @@ const PropertyPage = () => {
           </div>
         </section>
 
+        <PropertyImages images={property.images}/>
+
         {/* <!-- Images --> */}
         {/* <section className="bg-blue-50 p-4">
           <div className="container mx-auto">
@@ -201,3 +204,4 @@ const PropertyPage = () => {
 }
 
 export default PropertyPage
+ 
