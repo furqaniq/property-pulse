@@ -22,7 +22,7 @@ export const GET = async (request, { params }) => {
  // DELETE /api/properties/:id
 export const DELETE = async (request, { params }) => { 
     try {
-        const propertyId = params.id;
+        const propertyId =  params.id;
 
         const sessionUser = await getSessionUser();
         
