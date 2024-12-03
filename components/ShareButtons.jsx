@@ -1,16 +1,14 @@
-import React from 'react';
-import { FaShare } from 'react-icons/fa';
-import { 
-   FacebookShareButton,
-   TwitterShareButton,
-   WhatsappShareButton,
-   EmailShareButton,
-   TwitterIcon,
-   FacebookIcon,
-   TelegramIcon,
-   WhatsappIcon,
-   EmailIcon,
- } from 'react-share'
+'use client';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  EmailShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+  EmailIcon,
+} from 'react-share';
 
 const ShareButtons = ({ property }) => {
   const shareUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/properties/${property._id}`;
@@ -18,26 +16,26 @@ const ShareButtons = ({ property }) => {
   return (
     <>
       <h3 className='text-xl font-bold text-center pt-2'>
-        Share This Property
+        Share This Property:
       </h3>
       <div className='flex gap-3 justify-center pb-5'>
-        <FacebookShareButton 
+        <FacebookShareButton
           url={shareUrl}
           quote={property.name}
-          hashtag={`#${property.type}ForRent`}
+          hashtag={`#${property.type.replace(/\s/g, '')}ForRent`}
         >
           <FacebookIcon size={40} round={true} />
         </FacebookShareButton>
 
-        <TwitterShareButton 
+        <TwitterShareButton
           url={shareUrl}
           title={property.name}
-          hashtags={[`#${property.type.replace(/\s/g, '')}ForRent`]}
+          hashtags={[`${property.type.replace(/\s/g, '')}ForRent`]}
         >
           <TwitterIcon size={40} round={true} />
         </TwitterShareButton>
 
-        <WhatsappShareButton 
+        <WhatsappShareButton
           url={shareUrl}
           title={property.name}
           separator=':: '
@@ -45,16 +43,15 @@ const ShareButtons = ({ property }) => {
           <WhatsappIcon size={40} round={true} />
         </WhatsappShareButton>
 
-        <EmailShareButton 
+        <EmailShareButton
           url={shareUrl}
           subject={property.name}
-          body={ `Check out this propertyy listing: ${shareUrl}` }
+          body={`Check out this property listing: ${shareUrl}`}
         >
           <EmailIcon size={40} round={true} />
         </EmailShareButton>
       </div>
     </>
-  )
-}
-
-export default ShareButtons
+  );
+};
+export default ShareButtons;
