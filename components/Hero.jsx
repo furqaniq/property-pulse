@@ -1,6 +1,8 @@
 import React from 'react';
 import PropertySearchForm from './PropertySearchForm';
 
+export const dynamic = 'force-dynamic';
+
 const Hero = () => {
   return (
     <section className="bg-blue-700 py-20 mb-4">
