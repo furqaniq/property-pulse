@@ -1,6 +1,8 @@
 import React from 'react';
 import InfoBox from './InfoBox';
 
+export const dynamic = 'force-dynamic';
+
 const InfoBoxes = () => {
   return (
     <section>
