@@ -31,7 +31,7 @@ import React from 'react';
 import { fetchProperties } from '@/utils/requests';
 import FeaturedPropertyCard from './FeaturedPropertyCard';
 
-const FeaturedProperties = ({ properties }) => {
+const FeaturedProperties = ({ properties = [] }) => { // Set default to an empty array
   return (
     properties.length > 0 && (
       <section className="bg-blue-50 px-4 pt-6 pb-10">
@@ -53,6 +53,8 @@ const FeaturedProperties = ({ properties }) => {
 // This function runs at build time and fetches the properties
 export async function getStaticProps() {
   const properties = await fetchProperties({ showFeatured: true });
+
+  console.log('Fetched properties:', properties); // Debugging log
 
   return {
     props: {
