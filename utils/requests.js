@@ -56,7 +56,7 @@ async function fetchProperties({ showFeatured = false } = {}) {
     }
 
     const res = await fetch(`${apiDomain}/properties${showFeatured ? '/featured' : ''}`, {
-      cache: 'force-cache', // Use caching to improve performance
+      cache: 'default', // Use caching to improve performance
     });
 
     if (!res.ok) {
@@ -79,7 +79,7 @@ async function fetchProperty(id) {
     }
 
     const res = await fetch(`${apiDomain}/properties/${id}`, {
-      cache: 'force-cache', // Use caching to improve performance
+      cache: 'default', // Use caching to improve performance
     });
 
     if (!res.ok) {
