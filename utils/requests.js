@@ -1,96 +1,96 @@
-// const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
-
-// // Fetch all properties
-// async function fetchProperties({ showFeatured = false } = {}) {
-//     try {
-//       // Handle the case where the domain is not available yet
-//       if (!apiDomain) {
-//          return [];
-//       }
-
-//       const res = await fetch(`${apiDomain}/properties${showFeatured ? '/featured' : ''}`, { cache: 'no-store' }); 
-  
-//       if (!res.ok) {
-//         throw new Error('Failed to fetch data');
-//       }
-      
-//       return res.json();
-//     } catch (error) {
-//       console.log(error);
-//       return [];
-//     }
-//   };
-
-//   // Fetch single property
-//   async function fetchProperty(id) {
-//     try {
-//       // Handle the case where the domain is not available yet
-//       if (!apiDomain) {
-//          return null;
-//       }
-
-//       const res = await fetch(`${apiDomain}/properties/${id}`, { cache:'no-store' }); 
-  
-//       if (!res.ok) {
-//         throw new Error('Failed to fetch data');
-//       }
-      
-//       return res.json();
-//     } catch (error) {
-//       console.log(error);
-//       return null;
-//     }
-//   };
-
-
-//   export { fetchProperties, fetchProperty };
-
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
 // Fetch all properties
 async function fetchProperties({ showFeatured = false } = {}) {
-  try {
-    // Handle the case where the domain is not available yet
-    if (!apiDomain) {
-      throw new Error('API domain is not set');
+    try {
+      // Handle the case where the domain is not available yet
+      if (!apiDomain) {
+         return [];
+      }
+
+      const res = await fetch(`${apiDomain}/properties${showFeatured ? '/featured' : ''}`, { cache: 'no-store' }); 
+  
+      if (!res.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      
+      return res.json();
+    } catch (error) {
+      console.log(error);
+      return [];
     }
+  };
 
-    const res = await fetch(`${apiDomain}/properties${showFeatured ? '/featured' : ''}`, {
-      cache: 'default', // Use caching to improve performance
-    });
+  // Fetch single property
+  async function fetchProperty(id) {
+    try {
+      // Handle the case where the domain is not available yet
+      if (!apiDomain) {
+         return null;
+      }
 
-    if (!res.ok) {
-      throw new Error('Failed to fetch data');
+      const res = await fetch(`${apiDomain}/properties/${id}`, { cache:'no-store' }); 
+  
+      if (!res.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      
+      return res.json();
+    } catch (error) {
+      console.log(error);
+      return null;
     }
+  };
 
-    return await res.json();
-  } catch (error) {
-    console.error(error);
-    return []; // Return an empty array on error
-  }
-}
 
-// Fetch single property
-async function fetchProperty(id) {
-  try {
-    // Handle the case where the domain is not available yet
-    if (!apiDomain) {
-      throw new Error('API domain is not set');
-    }
+  export { fetchProperties, fetchProperty };
 
-    const res = await fetch(`${apiDomain}/properties/${id}`, {
-      cache: 'default', // Use caching to improve performance
-    });
+// const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
-    if (!res.ok) {
-      throw new Error('Failed to fetch data');
-    }
+// // Fetch all properties
+// async function fetchProperties({ showFeatured = false } = {}) {
+//   try {
+//     // Handle the case where the domain is not available yet
+//     if (!apiDomain) {
+//       throw new Error('API domain is not set');
+//     }
 
-    return await res.json();
-  } catch (error) {
-    console.error(error);
-    return null; // Return null on error
-  }
-}
+//     const res = await fetch(`${apiDomain}/properties${showFeatured ? '/featured' : ''}`, {
+//       cache: 'default', // Use caching to improve performance
+//     });
 
-export { fetchProperties, fetchProperty }; // utils/request.js
+//     if (!res.ok) {
+//       throw new Error('Failed to fetch data');
+//     }
+
+//     return await res.json();
+//   } catch (error) {
+//     console.error(error);
+//     return []; // Return an empty array on error
+//   }
+// }
+
+// // Fetch single property
+// async function fetchProperty(id) {
+//   try {
+//     // Handle the case where the domain is not available yet
+//     if (!apiDomain) {
+//       throw new Error('API domain is not set');
+//     }
+
+//     const res = await fetch(`${apiDomain}/properties/${id}`, {
+//       cache: 'default', // Use caching to improve performance
+//     });
+
+//     if (!res.ok) {
+//       throw new Error('Failed to fetch data');
+//     }
+
+//     return await res.json();
+//   } catch (error) {
+//     console.error(error);
+//     return null; // Return null on error
+//   }
+// }
+
+// export { fetchProperties, fetchProperty }; // utils/request.js
